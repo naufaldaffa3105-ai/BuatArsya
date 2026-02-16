@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sayangku manisku arsyaa 🤍</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #d6f0ff);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    margin-top: 70px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #ff6f91;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    max-width: 500px;
+    margin: auto;
+}
+
+button {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: #ff8fab;
+    color: white;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+}
+
+#noBtn {
+    background-color: white;
+    color: #ff8fab;
+    position: absolute;
+}
+
+.meter-container {
+    width: 300px;
+    height: 25px;
+    background: #ffe5ec;
+    border-radius: 20px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+.meter {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff8fab, #ffc8dd);
+    border-radius: 20px;
+    transition: width 0.5s;
+}
+
+.heart {
+    position: fixed;
+    font-size: 24px;
+    animation: float 4s linear forwards;
+}
+
+@keyframes float {
+    0% {transform: translateY(0); opacity: 1;}
+    100% {transform: translateY(-600px); opacity: 0;}
+}
+
+.hidden {
+    display: none;
+}
+
+img {
+    width: 200px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Valentine, Sayanggkuu arsyaa 🤍</h1>
+
+    <p>
+    Kamu itu manusia paling lembut yang pernah Tuhan kirim ke hidup aku ✨  
+    Sejak ada kamu, semuanya jadi lebih hangat, lebih warna pastel, dan lebih bermakna 💕  
+    Jadi sekarang aku mau nanya...
+    </p>
+
+    <h2 style="color:#ff6f91;">Seberapa sayang kamu ke aku? 😳</h2>
+
+    <div class="meter-container">
+        <div class="meter" id="loveMeter"></div>
+    </div>
+
+    <button id="yesBtn" onclick="increaseLove()">Sayang Banget 💖</button>
+    <button id="noBtn" onmouseover="moveButton()">Engga 😝</button>
+
+    <div id="finalSection" class="hidden">
+        <h2 style="color:#ff6f91;">Love Meter Full 💘</h2>
+        <p>
+        Berarti kamu siap yaa nemenin aku terus? 🥺  
+        Stay with me forever?
+        </p>
+
+        <!-- GANTI FOTO DI BAWAH INI -->
+        <img src="New folder/WhatsApp Image 2026-02-16 at 2.54.05 PM.jpeg" alt="Foto Kita">
+
+        <br>
+        <button onclick="finalAnswer()">Yes, Forever 🤍</button>
+    </div>
+</div>
+
+<!-- BACKGROUND MUSIC (GANTI FILE LAGUNYA) -->
+<audio id="bgMusic" loop>
+    <source src="lagu/PETRA SIHOMBING - Istimewa Official Music Video Clip.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let love = 0;
+
+function increaseLove() {
+    if (love === 0) {
+        document.getElementById("bgMusic").play();
+    }
+
+    if (love < 100) {
+        love += 20;
+        document.getElementById("loveMeter").style.width = love + "%";
+        createHearts();
+    }
+
+    if (love >= 100) {
+        document.getElementById("finalSection").classList.remove("hidden");
+    }
+}
+
+function moveButton() {
+    var button = document.getElementById("noBtn");
+    var x = Math.random() * (window.innerWidth - 100);
+    var y = Math.random() * (window.innerHeight - 50);
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+function createHearts() {
+    for (let i = 0; i < 8; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+        heart.style.fontSize = (Math.random() * 10 + 20) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+}
+
+function finalAnswer() {
+    alert("Hehehe 🤍 Aku janji bakal sayang kamu terus juga 💍✨");
+}
+</script>
+
+</body>
+</html>
